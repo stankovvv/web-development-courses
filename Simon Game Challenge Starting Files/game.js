@@ -1,12 +1,13 @@
 
-var buttonColours = ["red", "blue", "green", "yellow"];
+let buttonColours = ["red", "blue", "green", "yellow"];
+let gamePattern = [];
 
-var gamePattern = [];
-var userClickedPattern = [];
 function nextSequence() {
-  var randomNumber = Math.floor(Math.random() * 4);
-  var randomChosenColour = buttonColours[randomNumber];
+  let randomNumber = Math.floor(Math.random() * 4);
+  let randomChosenColour = buttonColours[randomNumber];
   gamePattern.push(randomChosenColour);
+
   $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
-  playSound(randomChosenColour);
+  let audio = new Audio("sounds/" + randomChosenColour + ".mp3");
+  audio.play();
 }
