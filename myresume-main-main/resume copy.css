@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap');
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ink:        #0d0d0d;
+  --paper:      #ffffff;
+  --cream:      #f4f4f4;
+  --accent:     #0d0d0d;
+  --accent-dim: #e0e0e0;
+  --rule:       #d0d0d0;
+  --muted:      #666666;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  line-height: 1.7;
+  padding: 3rem 1.5rem 5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ── Header / Name ────────────────────────────────────────── */
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 0.15em;
+}
+
+/* ── Photo ────────────────────────────────────────────────── */
+img {
+  display: block;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  margin: 1.2rem 0 2rem;
+  filter: none;
+}
+
+/* ── Section Headings ─────────────────────────────────────── */
+h2 {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+/* ── Dividers ─────────────────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2rem 0 0;
+}
+
+/* ── Summary paragraph ────────────────────────────────────── */
+p {
+  font-size: 1.05rem;
+  color: var(--ink);
+  max-width: 52ch;
+}
+
+/* ── Lists ────────────────────────────────────────────────── */
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+ul li {
+  font-size: 0.92rem;
+  padding-left: 1.2em;
+  position: relative;
+  color: var(--ink);
+}
+
+ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+/* ── Languages special layout ─────────────────────────────── */
+h2:has(+ ul li:first-child) + ul,
+/* fallback: target by order if :has unsupported */
+ul:nth-of-type(3) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.4rem 1.5rem;
+}
+
+/* ── Links ────────────────────────────────────────────────── */
+a {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 1px;
+  margin-top: 0.5rem;
+  margin-right: 1.5rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* ── Footer strip ─────────────────────────────────────────── */
+body::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
+  margin-top: 3.5rem;
+}
+
+/* ── Print ────────────────────────────────────────────────── */
+@media print {
+  body { background: white; padding: 2cm; }
+  a { border: none; }
+}

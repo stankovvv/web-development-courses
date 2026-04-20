@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:           #0d1117;
+  --bg-surface:   #161b22;
+  --bg-hover:     #21262d;
+  --border:       #30363d;
+  --text:         #e6edf3;
+  --text-muted:   #7d8590;
+  --accent:       #58a6ff;
+  --accent-green: #3fb950;
+  --accent-dim:   #1f3a5f;
+}
+
+html { font-size: 16px; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  line-height: 1.7;
+  padding: 3rem 1.5rem 5rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ── Top bar (like a GitHub repo header) ──────────────────── */
+body::before {
+  content: '📄 mykola-stankov / resume';
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.03em;
+}
+
+/* ── Name ─────────────────────────────────────────────────── */
+h1 {
+  font-size: clamp(2rem, 7vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 0.2em;
+}
+
+/* ── Photo ────────────────────────────────────────────────── */
+img {
+  display: block;
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  margin: 1.2rem 0 2rem;
+  outline: 3px solid var(--accent-dim);
+}
+
+/* ── Section Headings ─────────────────────────────────────── */
+h2 {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2.5rem;
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+h2::before {
+  content: '#';
+  color: var(--accent);
+  font-weight: 600;
+}
+
+h2::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Dividers ─────────────────────────────────────────────── */
+hr {
+  display: none;
+}
+
+/* ── Summary ──────────────────────────────────────────────── */
+p {
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--bg-surface);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 0.75rem 1rem;
+  max-width: 56ch;
+}
+
+/* ── Lists ────────────────────────────────────────────────── */
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+ul li {
+  font-size: 0.9rem;
+  padding: 0.45rem 0.9rem 0.45rem 2rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  position: relative;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+ul li:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+}
+
+ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0.7rem;
+  color: var(--accent-green);
+  font-size: 0.75rem;
+}
+
+/* ── Languages grid ───────────────────────────────────────── */
+ul:nth-of-type(3) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.35rem;
+}
+
+/* ── Links ────────────────────────────────────────────────── */
+a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  margin-top: 0.6rem;
+  margin-right: 0.6rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+a::before {
+  content: '↗';
+  font-size: 0.9rem;
+}
+
+a:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+body::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin-top: 3.5rem;
+}
+
+/* ── Print ────────────────────────────────────────────────── */
+@media print {
+  body { background: white; color: black; }
+  body::before, body::after { display: none; }
+}
