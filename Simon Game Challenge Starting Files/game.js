@@ -2,8 +2,15 @@
 let buttonColours = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
 let level = 0;
+let started = false;
+// To store the pattern of colours clicked by the user
+let userClickedPattern = [];
 // To generate a random colour and add it to the game pattern
 function nextSequence() {
+  if (!started) {
+    started = true;
+  }
+
   level++;
   $("#level-title").text("Level " + level);
   let randomNumber = Math.floor(Math.random() * 4);
@@ -14,14 +21,14 @@ function nextSequence() {
   let audio = new Audio("sounds/" + randomChosenColour + ".mp3");
   audio.play();
 }
-// To store the pattern of colours clicked by the user
-let userClickedPattern = [];
+
 // To detect when a button is clicked and store the id of the button in the user pattern array, play the sound for the button and animate it
 $(".btn").click(function() {
   let userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
   playSound(userChosenColour);
   animatePress(userChosenColour);
+  checkAnswer(userClickedPattern.length - 1);
 });
 //2. Create a new function called playSound() that takes a single input parameter called name.
 function playSound(name) {
@@ -35,9 +42,7 @@ function animatePress(currentColour) {
     $("#" + currentColour).removeClass("pressed");
   }, 100);
 }
-let started = false;
-
-$(document).keypress(function() {
+$(document).keydown(function() {
   if (!started) {
     nextSequence();
     started = true;
@@ -71,6 +76,7 @@ function checkAnswer(currentLevel) {
 
       //3. Change the h1 title to say "Game Over, Press Any Key to Restart" if the user got the answer wrong.
       $("#level-title").text("Game Over, Press Any Key to Restart");
+      startOver();
     }
 
 }
