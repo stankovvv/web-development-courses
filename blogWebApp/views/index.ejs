@@ -1,0 +1,24 @@
+<%- include('header') %>
+
+<% if (typeof title === 'undefined') { %>
+    <h1>Home</h1>
+<% } else { %>
+    <h1><%= title %></h1>
+<% } %>
+
+<% if (typeof content === 'undefined') { %>
+    <p>Welcome to my blog!</p>
+<% } else { %>
+    <p><%= content %></p>
+<% } %>
+
+<form action="/submit" method="POST">
+    <input type="text" name="title" placeholder="Post Title" required>
+    <textarea name="content" placeholder="Post Content" required></textarea>
+    
+</form>
+<button action="/edit" method="POST">Edit Post</button>
+<button type="submit">Add Post</button>
+
+
+<%- include('footer') %>
